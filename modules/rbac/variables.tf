@@ -109,3 +109,9 @@ variable "platform_admin_group_object_ids" {
   type        = list(string)
   default     = []
 }
+
+variable "create_resource_group_reader_assignments" {
+  description = "Create resource group Reader role assignments for platform admins (disable if they already exist)"
+  type        = bool
+  default     = true
+}

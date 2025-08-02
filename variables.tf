@@ -364,6 +364,12 @@ variable "platform_admin_groups" {
   }
 }
 
+variable "create_resource_group_reader_assignments" {
+  description = "Create resource group Reader role assignments for platform admins (disable if they already exist to prevent conflicts)"
+  type        = bool
+  default     = false  # Default to false for better customer experience
+}
+
 # =============================================================================
 # Development and Testing
 # =============================================================================

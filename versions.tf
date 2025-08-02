@@ -25,19 +25,16 @@ terraform {
     }
   }
 
-  # Remote state backend configuration
-  # Comment out for local development
-  # backend "azurerm" {
-  #   resource_group_name  = "rg-terraform-state"
-  #   storage_account_name = "terraformstate"
-  #   container_name       = "tfstate"
-  #   key                  = "foundry-agents/terraform.tfstate"
-  #   subscription_id      = "00000000-0000-0000-0000-000000000000"
-  #   tenant_id           = "11111111-1111-1111-1111-111111111111"
-  #   use_azuread_auth    = true
-  #   use_oidc            = true
-  # }
+  # Remote state backend configuration  
+  backend "azurerm" {
+    resource_group_name  = "rg-terraform"
+    storage_account_name = "aaaorgtfstorage"
+    container_name       = "tfstate"
+    key                  = "ai-foundry-nocaphost/terraform.tfstate"
+    # subscription_id will be read from ARM_SUBSCRIPTION_ID environment variable
+    use_azuread_auth     = true
+  }
 
-  # For local development, use local backend
-  backend "local" {}
+  # For local development, comment out the backend above and use:
+  # backend "local" {}
 }

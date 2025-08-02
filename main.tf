@@ -540,6 +540,9 @@ module "rbac" {
   platform_admin_user_object_ids  = length(var.platform_admin_users) > 0 ? tolist(data.azuread_users.platform_admin_users[0].object_ids) : []
   platform_admin_group_object_ids = length(var.platform_admin_groups) > 0 ? tolist(data.azuread_groups.platform_admin_groups[0].object_ids) : []
 
+  # Control role assignment creation to prevent conflicts
+  create_resource_group_reader_assignments = var.create_resource_group_reader_assignments
+
   depends_on = [
     azurerm_storage_account.storage_account,
     azapi_resource.ai_search,

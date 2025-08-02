@@ -293,6 +293,11 @@ az account list --query "[].{Name:name, Id:id, State:state}"
 - Check resource-level permissions
 - Validate user/group object IDs
 
+**Role assignment conflicts**:
+- If you get "RoleAssignmentExists" errors, set `create_resource_group_reader_assignments = false` in your `terraform.tfvars`
+- This happens when resource group Reader roles already exist from previous deployments
+- The infrastructure will work correctly either way - this variable just prevents duplicate role creation
+
 ## 📚 Additional Resources
 
 - [Azure AI Foundry Documentation](https://docs.microsoft.com/azure/ai-foundry/)

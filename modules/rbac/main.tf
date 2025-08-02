@@ -203,11 +203,21 @@ resource "azurerm_role_assignment" "platform_admin_users_key_vault_admin" {
 
 # Resource group Reader access for platform admin users (all environments)
 resource "azurerm_role_assignment" "platform_admin_users_resource_group_reader" {
-  for_each = toset(var.platform_admin_user_object_ids)
+  for_each = var.create_resource_group_reader_assignments ? toset(var.platform_admin_user_object_ids) : []
 
   scope                = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/${var.resource_group_name}"
   role_definition_name = "Reader"
   principal_id         = each.value
+
+  # Prevent conflicts if role assignment already exists
+  lifecycle {
+    create_before_destroy = false
+  }
+
+  # Add a delay to ensure other resources are created first
+  depends_on = [
+    azurerm_role_assignment.platform_admin_users_storage_blob_data_contributor
+  ]
 }
 
 # =============================================================================
@@ -298,9 +308,19 @@ resource "azurerm_role_assignment" "platform_admin_groups_key_vault_admin" {
 
 # Resource group Reader access for platform admin groups (all environments)
 resource "azurerm_role_assignment" "platform_admin_groups_resource_group_reader" {
-  for_each = toset(var.platform_admin_group_object_ids)
+  for_each = var.create_resource_group_reader_assignments ? toset(var.platform_admin_group_object_ids) : []
 
   scope                = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/${var.resource_group_name}"
   role_definition_name = "Reader"
   principal_id         = each.value
+
+  # Prevent conflicts if role assignment already exists
+  lifecycle {
+    create_before_destroy = false
+  }
+
+  # Add a delay to ensure other resources are created first
+  depends_on = [
+    azurerm_role_assignment.platform_admin_groups_storage_blob_data_contributor
+  ]
 }
