@@ -1,0 +1,75 @@
+# Azure AI Foundry Infrastructure Configuration Template
+
+# Core settings
+environment           = "dev"                    # dev, staging, prod
+project_name          = "your-project"
+project_friendly_name = "Your AI Project"
+project_description   = "Azure AI Foundry project description"
+location              = "eastus2"
+
+# Subscription IDs (replace with your values)
+subscription_id_resources = "00000000-0000-0000-0000-000000000000"  # Workload subscription
+subscription_id_infra     = "11111111-1111-1111-1111-111111111111"  # Infrastructure subscription
+
+# Resource groups
+resource_group_name_resources = "rg-ai-workload"
+resource_group_name_dns       = "rg-dns-zones"
+
+# Networking (update with your existing VNet and subnets)
+subnet_id_private_endpoint = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-network/providers/Microsoft.Network/virtualNetworks/vnet-main/subnets/snet-endpoints"
+
+# Private DNS zones (must exist and be linked to your VNet)
+dns_zone_cognitiveservices = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com"
+dns_zone_openai = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.openai.azure.com"
+dns_zone_ai_services = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.services.ai.azure.com"
+storage_blob_dns_zone_id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
+search_dns_zone_id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.search.windows.net"
+key_vault_dns_zone_id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net"
+
+# Resource configuration
+storage_account_tier     = "Standard"
+storage_replication_type = "ZRS"
+
+search_sku             = "standard"
+search_replica_count   = 1
+search_partition_count = 1
+
+ai_foundry_sku = "S0"
+
+# Security settings
+enable_soft_delete           = true
+soft_delete_retention_days   = 30
+enable_versioning            = true
+enable_point_in_time_restore = false
+point_in_time_restore_days   = 7
+
+# Monitoring
+enable_diagnostic_settings = true
+enable_alerts = false
+alert_email_addresses = [
+   "admin@yourcompany.com"
+]
+
+# Feature flags
+enable_private_endpoints = true
+enable_managed_identity  = true
+enable_customer_managed_keys = false
+skip_provider_registration = false
+enable_debug_logging = false
+
+# Access management (replace with your user/group IDs)
+platform_admin_users = [
+  "admin@yourcompany.com"
+]
+
+platform_admin_groups = [
+  "00000000-0000-0000-0000-000000000000"  # Azure AD group object ID
+]
+
+# Resource tagging
+tags = {
+  Owner       = "Your Team"
+  CostCenter  = "Engineering"
+  Purpose     = "AI Platform"
+  Environment = "Development"
+}

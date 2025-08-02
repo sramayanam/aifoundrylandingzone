@@ -1,0 +1,73 @@
+name: Terraform CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  terraform:
+    name: Terraform Validation
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "~1.0"
+
+    - name: Terraform Format Check
+      run: terraform fmt -check -recursive
+
+    - name: Terraform Init
+      run: terraform init -backend=false
+
+    - name: Terraform Validate
+      run: terraform validate
+
+    - name: TFLint Setup
+      uses: terraform-linters/setup-tflint@v4
+
+    - name: TFLint Run
+      run: |
+        tflint --init
+        tflint --recursive
+
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: tfsec
+      uses: aquasecurity/tfsec-action@v1.0.3
+      with:
+        soft_fail: true
+
+  documentation:
+    name: Documentation Check
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Check for sensitive data
+      run: |
+        if grep -r --include="*.tf" --include="*.tfvars" --include="*.md" -E "(password|secret|key|token)" . | grep -v ".example" | grep -v "description"; then
+          echo "Found potential sensitive data in committed files"
+          exit 1
+        fi
+
+    - name: Validate README
+      run: |
+        if [ ! -f README.md ]; then
+          echo "README.md is missing"
+          exit 1
+        fi
