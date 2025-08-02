@@ -69,16 +69,6 @@ variable "resource_group_name_resources" {
   }
 }
 
-variable "resource_group_name_dns" {
-  description = "Name of the resource group containing private DNS zones"
-  type        = string
-
-  validation {
-    condition     = can(regex("^[a-zA-Z0-9._-]{1,90}$", var.resource_group_name_dns))
-    error_message = "DNS resource group name must be 1-90 characters, alphanumeric, periods, underscores, hyphens and parentheses."
-  }
-}
-
 # =============================================================================
 # Subscription Configuration
 # =============================================================================
@@ -175,16 +165,6 @@ variable "search_dns_zone_id" {
 # Resource Configuration
 # =============================================================================
 
-variable "storage_account_tier" {
-  description = "Storage account performance tier"
-  type        = string
-  default     = "Standard"
-
-  validation {
-    condition     = contains(["Standard", "Premium"], var.storage_account_tier)
-    error_message = "Storage account tier must be either Standard or Premium."
-  }
-}
 
 variable "storage_replication_type" {
   description = "Storage account replication type"
@@ -251,38 +231,10 @@ variable "enable_soft_delete" {
   default     = true
 }
 
-variable "soft_delete_retention_days" {
-  description = "Number of days to retain soft deleted blobs"
-  type        = number
-  default     = 30
-
-  validation {
-    condition     = var.soft_delete_retention_days >= 1 && var.soft_delete_retention_days <= 365
-    error_message = "Soft delete retention days must be between 1 and 365."
-  }
-}
-
 variable "enable_versioning" {
   description = "Enable blob versioning for storage account"
   type        = bool
   default     = true
-}
-
-variable "enable_point_in_time_restore" {
-  description = "Enable point-in-time restore for storage account"
-  type        = bool
-  default     = false
-}
-
-variable "point_in_time_restore_days" {
-  description = "Number of days for point-in-time restore"
-  type        = number
-  default     = 7
-
-  validation {
-    condition     = var.point_in_time_restore_days >= 1 && var.point_in_time_restore_days <= 365
-    error_message = "Point-in-time restore days must be between 1 and 365."
-  }
 }
 
 # =============================================================================
@@ -416,17 +368,6 @@ variable "platform_admin_groups" {
 # Development and Testing
 # =============================================================================
 
-variable "skip_provider_registration" {
-  description = "Skip automatic provider registration (useful for environments with restricted permissions)"
-  type        = bool
-  default     = false
-}
-
-variable "enable_debug_logging" {
-  description = "Enable debug logging for Terraform resources"
-  type        = bool
-  default     = false
-}
 
 # =============================================================================
 # Additional Network Configuration Variables (Simplified)
@@ -489,62 +430,4 @@ variable "key_vault_dns_zone_id" {
 # OpenAI Deployment Configuration
 # =============================================================================
 
-variable "openai_deployment_name" {
-  description = "Name of the OpenAI deployment"
-  type        = string
-  default     = "gpt-4o"
 
-  validation {
-    condition     = can(regex("^[a-zA-Z0-9-_]{1,64}$", var.openai_deployment_name))
-    error_message = "OpenAI deployment name must be 1-64 characters, alphanumeric, hyphens, and underscores only."
-  }
-}
-
-variable "openai_model_name" {
-  description = "Name of the OpenAI model to deploy"
-  type        = string
-  default     = "gpt-4o"
-
-  validation {
-    condition = contains([
-      "gpt-4o", "gpt-4o-mini", "gpt-4", "gpt-35-turbo", "text-embedding-ada-002",
-      "text-embedding-3-small", "text-embedding-3-large", "dall-e-3"
-    ], var.openai_model_name)
-    error_message = "OpenAI model name must be a supported model."
-  }
-}
-
-variable "openai_model_version" {
-  description = "Version of the OpenAI model to deploy"
-  type        = string
-  default     = "2024-05-13"
-
-  validation {
-    condition     = can(regex("^[0-9]{4}-[0-9]{2}-[0-9]{2}$", var.openai_model_version))
-    error_message = "OpenAI model version must be in YYYY-MM-DD format."
-  }
-}
-
-variable "openai_sku_name" {
-  description = "SKU name for the OpenAI deployment"
-  type        = string
-  default     = "GlobalStandard"
-
-  validation {
-    condition = contains([
-      "Standard", "GlobalStandard", "GlobalBatch", "ProvisionedManaged", "GlobalProvisionedManaged"
-    ], var.openai_sku_name)
-    error_message = "OpenAI SKU name must be a supported SKU type."
-  }
-}
-
-variable "openai_sku_capacity" {
-  description = "SKU capacity for the OpenAI deployment"
-  type        = number
-  default     = 1
-
-  validation {
-    condition     = var.openai_sku_capacity >= 1 && var.openai_sku_capacity <= 1000
-    error_message = "OpenAI SKU capacity must be between 1 and 1000."
-  }
-}

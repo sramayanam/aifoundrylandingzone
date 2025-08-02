@@ -7,11 +7,6 @@ variable "project_name" {
   type        = string
 }
 
-variable "environment" {
-  description = "Environment name"
-  type        = string
-}
-
 variable "location" {
   description = "Azure location"
   type        = string
@@ -101,13 +96,6 @@ variable "ai_foundry_id" {
   description = "AI Foundry resource ID"
   type        = string
   default     = null
-}
-
-# Log Categories (Simplified - No Cosmos DB)
-variable "storage_log_categories" {
-  description = "Storage account log categories to enable"
-  type        = list(string)
-  default     = ["blobLogs", "queueLogs", "tableLogs"]
 }
 
 variable "search_log_categories" {

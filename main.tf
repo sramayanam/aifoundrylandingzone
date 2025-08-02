@@ -37,7 +37,6 @@ module "monitoring" {
   source = "./modules/monitoring"
 
   project_name        = var.project_name
-  environment         = var.environment
   location            = var.location
   resource_group_name = var.resource_group_name_resources
   tags                = local.common_tags
@@ -80,7 +79,6 @@ module "security" {
   environment         = var.environment
   location            = var.location
   resource_group_name = var.resource_group_name_resources
-  subscription_id     = var.subscription_id_resources
   tags                = local.common_tags
 
   # Key Vault Configuration
@@ -512,11 +510,8 @@ resource "azapi_resource" "conn_ai_services" {
 module "rbac" {
   source = "./modules/rbac"
 
-  project_name        = var.project_name
   environment         = var.environment
-  location            = var.location
   resource_group_name = var.resource_group_name_resources
-  tags                = local.common_tags
 
   # AI Foundry identity information
   ai_foundry_account_name         = azapi_resource.ai_foundry.name
