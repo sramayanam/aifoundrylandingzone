@@ -1,5 +1,5 @@
 # =============================================================================
-# Azure AI Foundry Agent Service - Simplified Infrastructure (No Capability Hosts)
+# Azure AI Foundry Infrastructure - Simplified NoCapabilityHosts Deployment
 # =============================================================================
 
 # Random string for unique resource naming
