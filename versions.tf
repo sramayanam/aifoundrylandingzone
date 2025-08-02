@@ -1,6 +1,6 @@
 # Terraform version and provider requirements
 terraform {
-  required_version = ">= 1.10.0"
+  required_version = ">= 1.12.0"
 
   required_providers {
     azapi = {
@@ -27,9 +27,9 @@ terraform {
   #   resource_group_name  = "rg-terraform-state"
   #   storage_account_name = "terraformstate"
   #   container_name       = "tfstate"
-  #   key                  = "foundry-agents-nocaphost/terraform.tfstate"
-  #   subscription_id      = "32e739cb-7b23-4259-a180-e1e0e69b974d"
-  #   tenant_id           = "8429325e-77e2-4bd9-9f1e-4be922d474df"
+  #   key                  = "foundry-agents/terraform.tfstate"
+  #   subscription_id      = "00000000-0000-0000-0000-000000000000"
+  #   tenant_id           = "11111111-1111-1111-1111-111111111111"
   #   use_azuread_auth    = true
   #   use_oidc            = true
   # }
