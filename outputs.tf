@@ -234,7 +234,12 @@ output "terraform_state" {
       time    = "~>0.12"
       random  = "~>3.6"
     }
-    backend_type = "local"
+    backend_type = "azurerm"
+    backend_config = {
+      storage_account = "aaaorgtfstorage"
+      container_name  = "tfstate"
+      key            = "ai-foundry-nocaphost/terraform.tfstate"
+    }
     resources_created = {
       storage_account    = 1
       ai_search          = 1
