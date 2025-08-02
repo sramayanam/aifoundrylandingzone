@@ -227,26 +227,38 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) for deta
    ```
 
 3. **Create a terraform.tfvars file:**
+   ```bash
+   # Copy the example template
+   cp terraform.tfvars.example terraform.tfvars
+
+   **Required configuration updates:**
    ```hcl
-   project_name                = "my-ai-project"
-   environment                = "dev"
-   location                   = "East US"
-   resource_group_name        = "rg-my-ai-project-dev"
+   # Core settings
+   project_name = "your-ai-project"
+   environment  = "dev"               # or staging/prod
+   location     = "eastus2"           # your preferred region
    
-   # OpenAI Configuration
-   openai_deployments = [
-     {
-       name    = "gpt-4o"
-       model   = "gpt-4o"
-       version = "2024-08-06"
-       sku     = "GlobalStandard"
-       capacity = 50
-     }
-   ]
+   # Subscription IDs (REQUIRED - replace with your values)
+   subscription_id_resources = "your-workload-subscription-id"
+   subscription_id_infra     = "your-infrastructure-subscription-id"
    
-   # Private Endpoints (optional)
-   enable_private_endpoints    = true
-   subnet_id_private_endpoint = "/subscriptions/{subscription-id}/resourceGroups/{rg-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
+   # Resource groups
+   resource_group_name_resources = "rg-ai-workload"
+   resource_group_name_dns       = "rg-dns-zones"
+   
+   # Networking (REQUIRED if using private endpoints)
+   subnet_id_private_endpoint = "/subscriptions/.../subnets/your-endpoint-subnet"
+   
+   # Private DNS zones (REQUIRED for private endpoints)
+   dns_zone_cognitiveservices = "/subscriptions/.../privatelink.cognitiveservices.azure.com"
+   dns_zone_openai           = "/subscriptions/.../privatelink.openai.azure.com"
+   dns_zone_ai_services      = "/subscriptions/.../privatelink.services.ai.azure.com"
+   storage_blob_dns_zone_id  = "/subscriptions/.../privatelink.blob.core.windows.net"
+   search_dns_zone_id        = "/subscriptions/.../privatelink.search.windows.net"
+   
+   # Admin access (REQUIRED - replace with your email/group IDs)
+   platform_admin_users = ["your-email@company.com"]
+   platform_admin_groups = ["your-azure-ad-group-id"]
    ```
 
 4. **Plan and apply:**
