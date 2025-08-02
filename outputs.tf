@@ -238,7 +238,7 @@ output "terraform_state" {
     backend_config = {
       storage_account = "aaaorgtfstorage"
       container_name  = "tfstate"
-      key            = "ai-foundry-nocaphost/terraform.tfstate"
+      key             = "ai-foundry-nocaphost/terraform.tfstate"
     }
     resources_created = {
       storage_account    = 1

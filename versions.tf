@@ -32,7 +32,7 @@ terraform {
     container_name       = "tfstate"
     key                  = "ai-foundry-nocaphost/terraform.tfstate"
     # subscription_id automatically read from ARM_SUBSCRIPTION_ID environment variable
-    use_azuread_auth     = true
+    use_azuread_auth = true
   }
 
   # For local development, comment out the backend above and use:
