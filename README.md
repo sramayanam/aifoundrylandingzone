@@ -4,7 +4,20 @@
 
 Terraform configuration for deploying Azure AI Foundry with private networking and cross-subscription support.
 
-## 🎯 Overview
+## ## 🛠 Troubleshooting
+
+### Common Issues
+
+**Backend configuration errors**:
+- Ensure `ARM_SUBSCRIPTION_ID` environment variable is set to the subscription containing the Terraform state storage account
+- Verify you have "Storage Blob Data Contributor" permissions on the state storage account
+- Check that the storage account and container exist
+
+**Cross-subscription permissions**:
+```bash
+# Ensure you have access to both subscriptions
+az account list --query "[].{Name:name, Id:id, State:state}"
+```ew
 
 This deployment provides a **cost-optimized** Azure AI Foundry setup with:
 
@@ -113,7 +126,14 @@ Before deployment, ensure you have these private DNS zones:
    terraform init
    ```
 
-3. **Create a terraform.tfvars file:**
+3. **Set up environment variables:**
+   ```bash
+   # Required for Azure Storage backend authentication
+   export ARM_SUBSCRIPTION_ID="your-infrastructure-subscription-id"
+   ```
+   > **Note:** The `ARM_SUBSCRIPTION_ID` should be set to the subscription containing the Terraform state storage account.
+
+4. **Create a terraform.tfvars file:**
    ```bash
    # Copy the example template
    cp terraform.tfvars.example terraform.tfvars
@@ -152,7 +172,7 @@ Before deployment, ensure you have these private DNS zones:
    platform_admin_groups = ["your-azure-ad-group-id"]
    ```
 
-4. **Plan and deploy:**
+5. **Plan and deploy:**
    ```bash
    terraform plan
    terraform apply
