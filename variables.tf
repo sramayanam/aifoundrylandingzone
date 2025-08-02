@@ -389,7 +389,7 @@ variable "key_vault_id" {
 variable "platform_admin_users" {
   description = "List of user principal names (UPNs) to grant platform admin access"
   type        = list(string)
-  default     = ["platformadmin@sreerammsft.com"]
+  default     = ["admin@example.com"]
 
   validation {
     condition = alltrue([

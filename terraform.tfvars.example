@@ -47,7 +47,7 @@ point_in_time_restore_days   = 7
 enable_diagnostic_settings = true
 enable_alerts = false
 alert_email_addresses = [
-   "admin@yourcompany.com"
+   "admin@example.com"
 ]
 
 # Optional: existing Log Analytics workspace
@@ -66,7 +66,7 @@ enable_debug_logging = false
 
 # Access management (replace with your user/group IDs)
 platform_admin_users = [
-  "admin@yourcompany.com"
+  "admin@example.com"
 ]
 
 platform_admin_groups = [
