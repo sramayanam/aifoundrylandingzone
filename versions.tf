@@ -31,7 +31,7 @@ terraform {
     storage_account_name = "aaaorgtfstorage"
     container_name       = "tfstate"
     key                  = "ai-foundry-nocaphost/terraform.tfstate"
-    # subscription_id will be read from ARM_SUBSCRIPTION_ID environment variable
+    # subscription_id automatically read from ARM_SUBSCRIPTION_ID environment variable
     use_azuread_auth     = true
   }
 
