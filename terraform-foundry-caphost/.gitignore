@@ -1,0 +1,63 @@
+# Terraform files and directories
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+.terraform.lock.hcl
+tfplan
+*.plan
+tf.plan
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Claude AI assistant files
+.claude/
+settings.local.json
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Environment and configuration files
+.env
+.env.*
+!.env.example
+.env.local
+.env.*.local
+
+# Log files
+*.log
+logs/
+
+# Azure CLI files and credentials
+.azure/
+
+# Backup and temporary files
+*.backup
+*.bak
+*.tmp
+*~
+
+# Command scripts with sensitive data
+commands.sh
+
+# Security files
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer

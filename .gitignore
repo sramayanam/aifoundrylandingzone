@@ -1,46 +1,98 @@
-# Local .terraform directories
+# Terraform directories and state files
 **/.terraform/*
-
-# .tfstate files
 *.tfstate
 *.tfstate.*
+.terraform.lock.hcl
 
-# Crash log files
-crash.log
-crash.*.log
+# Terraform plan files
+*tfplan*
+*.plan
+tf.plan
+tfplan
 
-# Exclude all .tfvars files, which are likely to contain sensitive data
+# Terraform variable files (contain sensitive data)
 *.tfvars
 *.tfvars.json
+!*.tfvars.example
 
-# Ignore override files as they are usually used to override resources locally
+# Terraform override files
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Include override files you do wish to add to version control using negated pattern
-# !example_override.tf
+# Crash log files
+crash.log
+crash.*.log
 
-# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-*tfplan*
+# Command scripts with potentially sensitive data
+commands.sh
+**/commands.sh
 
-# Ignore CLI configuration files
+# Terraform CLI configuration files
 .terraformrc
 terraform.rc
 
-# IDE files
+# IDE and editor files
 .vscode/
 .idea/
 *.swp
 *.swo
+*.tmp
 
-# OS files
+# Claude AI assistant files
+.claude/
+**/.claude/
+
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
-# Azure CLI files
-.azure/
+# Environment and configuration files
+.env
+.env.*
+!.env.example
 
-# Backup files
+# Azure CLI files and credentials
+.azure/
+**/.azure/
+
+# Log files
+*.log
+logs/
+**/*.log
+
+# Backup and temporary files
 *.backup
+*.bak
+*.tmp
+*~
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+
+# Python cache (if any Python scripts are added)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node modules (if any Node.js tools are used)
+node_modules/
+npm-debug.log*
+
+# Security and sensitive files
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+secrets/
+credentials/
