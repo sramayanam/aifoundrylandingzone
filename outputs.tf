@@ -207,7 +207,7 @@ output "application_integration" {
   value = {
     ai_foundry_endpoint = "https://${azapi_resource.ai_foundry.name}.cognitiveservices.azure.com/"
     search_endpoint     = "https://${azapi_resource.ai_search.name}.search.windows.net/"
-    storage_endpoint    = azurerm_storage_account.main.primary_blob_endpoint
+    storage_endpoint    = azurerm_storage_account.storage_account.primary_blob_endpoint
 
     # Authentication
     use_managed_identity = var.enable_managed_identity
