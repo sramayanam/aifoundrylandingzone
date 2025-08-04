@@ -4,25 +4,25 @@ environment  = "dev"
 
 # Azure subscription IDs
 subscription_id_resources = "aa8123d8-cdcc-443a-a2a1-a0ed191da95c"  # Workload subscription
-subscription_id_infra     = "32e739cb-7b23-4259-a180-e1e0e69b974d"  # Infrastructure subscription
+subscription_id_infra     = "{SUBSCRIPTION_ID}"  # Infrastructure subscription
 
 # Resource group for workload resources
 resource_group_name_resources = "rg-agents-secured-caphost"
 
 # Networking configuration
 # Private endpoint subnet (existing)
-subnet_id_private_endpoint = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-aaaorgai-eastus2/providers/Microsoft.Network/virtualNetworks/aaaorg-vnet-eastus2/subnets/pe-subnet"
+subnet_id_private_endpoint = "/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/rg-aaaorgai-eastus2/providers/Microsoft.Network/virtualNetworks/aaaorg-vnet-eastus2/subnets/pe-subnet"
 
 # Agent subnet (must be delegated to Microsoft.CognitiveServices/accounts)
-subnet_id_agent = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-aaaorgai-eastus2/providers/Microsoft.Network/virtualNetworks/aaaorg-vnet-eastus2/subnets/agent-subnet"
+subnet_id_agent = "/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/rg-aaaorgai-eastus2/providers/Microsoft.Network/virtualNetworks/aaaorg-vnet-eastus2/subnets/agent-subnet"
 
 # Private DNS zones (existing)
-dns_zone_cognitiveservices = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com"
-dns_zone_ai_services      = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.services.ai.azure.com"
-dns_zone_openai_azure     = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.openai.azure.com"
-storage_blob_dns_zone_id  = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
-search_dns_zone_id        = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.search.windows.net"
-cosmos_dns_zone_id        = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.documents.azure.com"
+dns_zone_cognitiveservices = "/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com"
+dns_zone_ai_services      = "/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.services.ai.azure.com"
+dns_zone_openai_azure     = "/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.openai.azure.com"
+storage_blob_dns_zone_id  = "/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
+search_dns_zone_id        = "/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.search.windows.net"
+cosmos_dns_zone_id        = "/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.documents.azure.com"
 
 # Admin access configuration
 platform_admin_users  = ["platformadmin@sreerammsft.com"]
