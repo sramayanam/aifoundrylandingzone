@@ -1,8 +1,34 @@
 # Azure AI Foundry Infrastructure
 
-> **Simplified NoCapabilityHosts Configuration** - Streamlined Azure AI Foundry deployment without compute infrastructure
+> **Complete Azure AI Foundry Terraform Configurations** - Deploy AI Foundry with or without capability hosts
 
-Terraform configuration for deploying Azure AI Foundry with private networking and cross-subscription support.
+This repository provides production-ready Terraform configurations for deploying Azure AI Foundry with private networking and cross-subscription support.
+
+## 🚀 Deployment Options
+
+Choose the configuration that best fits your requirements:
+
+### 🏃‍♂️ Quick Start: NoCapabilityHosts (Current Directory)
+**Simplified configuration** - Cost-optimized deployment without compute infrastructure
+
+- ✅ **Lower cost** (~30% reduction vs capability hosts)
+- ✅ **Faster deployment** (5-8 minutes)  
+- ✅ **Perfect for development** and simple AI applications
+- ❌ No capability hosts for custom runtimes
+- ❌ No Cosmos DB for conversation storage
+
+**Start here** → [Continue with current configuration](#what-this-deploys)
+
+### 🏗️ Full Deployment: WithCapabilityHosts
+**Enterprise configuration** - Complete AI Foundry with Standard Agent support
+
+- ✅ **Capability hosts** for bring-your-own Azure resources
+- ✅ **Cosmos DB** for thread and conversation storage
+- ✅ **Agent subnet injection** for network-secured deployments
+- ✅ **Standard Agent** runtime support
+- ⚠️ Higher cost and complexity
+
+**Enterprise setup** → [Switch to terraform-foundry-caphost/](./terraform-foundry-caphost/)
 
 ## ✨ What This Deploys
 
@@ -262,11 +288,45 @@ Be aware of these architectural limitations:
 - **Simplified networking** - Basic private endpoint setup without complex topologies
 - **Limited scalability** - No auto-scaling VM infrastructure for heavy workloads
 
+## 🔄 Migration and Comparison
+
+### Choosing the Right Configuration
+
+| Feature | NoCapabilityHosts (Current) | WithCapabilityHosts |
+|---------|---------------------------|-------------------|
+| **Cost** | ~$50-100/month | ~$75-150/month |
+| **Deployment Time** | 5-8 minutes | 8-12 minutes |
+| **Cosmos DB** | ❌ Not included | ✅ Thread storage |
+| **Capability Hosts** | ❌ Not available | ✅ Account & Project level |
+| **Agent Subnet** | ❌ Not required | ✅ Network injection |
+| **Standard Agents** | ❌ Limited support | ✅ Full support |
+| **Custom Runtimes** | ❌ Not supported | ✅ BYOA resources |
+| **Ideal For** | Development, POCs | Production, Enterprise |
+
+### Migration Path to WithCapabilityHosts
+
+When you're ready to upgrade to the full configuration:
+
+1. **Navigate to the enhanced configuration:**
+   ```bash
+   cd terraform-foundry-caphost/
+   ```
+
+2. **Review the enhanced README:**
+   - [terraform-foundry-caphost/README.md](./terraform-foundry-caphost/README.md)
+   - Additional requirements: Agent subnet, Cosmos DB configuration
+   - Enhanced RBAC and networking setup
+
+3. **Plan your migration:**
+   - Use a new resource group to avoid conflicts
+   - Cosmos DB and agent subnet requirements
+   - Enhanced private endpoint configuration
+
 ## 🔄 Migration Path
 
 To migrate to the full deployment with capability hosts:
 
-1. Use the main `terraform-foundry-agent` configuration
+1. Use the `terraform-foundry-caphost/` configuration
 2. Add Cosmos DB variables to your terraform.tfvars
 3. Configure agent subnet network injection parameters
 4. Plan migration carefully to avoid resource naming conflicts
@@ -305,7 +365,32 @@ az account list --query "[].{Name:name, Id:id, State:state}"
 - This happens when resource group Reader roles already exist from previous deployments
 - The infrastructure will work correctly either way - this variable just prevents duplicate role creation
 
-## 📚 Additional Resources
+## � Repository Structure
+
+```
+terraform-foundry-nocaphost/          # ← You are here
+├── README.md                         # This file - NoCapabilityHosts guide
+├── main.tf                          # Simplified AI Foundry configuration
+├── terraform.tfvars.example         # Configuration template
+├── terraform-foundry-caphost/       # Enhanced configuration directory
+│   ├── README.md                    # WithCapabilityHosts guide
+│   ├── main.tf                      # Full AI Foundry with capability hosts
+│   └── terraform.tfvars.example     # Enhanced configuration template
+└── modules/                         # Shared Terraform modules
+    ├── networking/                  # Private endpoint configurations
+    ├── security/                    # RBAC and Key Vault modules
+    ├── monitoring/                  # Application Insights setup
+    └── rbac/                       # Role assignment modules
+```
+
+### Navigation Quick Links
+
+- **📖 Current Configuration:** NoCapabilityHosts (you're reading this)
+- **🏗️ Enhanced Configuration:** [terraform-foundry-caphost/README.md](./terraform-foundry-caphost/README.md)
+- **🔧 Shared Modules:** [modules/](./modules/) directory
+- **⚙️ CI/CD Pipeline:** [.github/workflows/](.github/workflows/)
+
+## �📚 Additional Resources
 
 - [Azure AI Foundry Documentation](https://docs.microsoft.com/azure/ai-foundry/)
 - [Azure OpenAI Service](https://docs.microsoft.com/azure/cognitive-services/openai/)
