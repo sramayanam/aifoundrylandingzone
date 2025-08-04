@@ -24,10 +24,10 @@ Terraform configuration for deploying Azure AI Foundry with capability hosts, en
 │          │                    │                             │
 │          ▼                    ▼                             │
 │  ┌──────────────┐    ┌──────────────────────────────────┐   │
-│  │ Capability   │    │    Agent Subnet (Delegated)     │   │
-│  │   Hosts      │    │  • Standard Agent Injection     │   │
-│  │              │    │  • Microsoft.CognitiveServices  │   │
-│  └──────────────┘    │  • Network Security             │   │
+│  │ Capability   │    │    Agent Subnet (Delegated)      │   │
+│  │   Hosts      │    │  • Standard Agent Injection      │   │
+│  │              │    │  • Microsoft.CognitiveServices   │   │
+│  └──────────────┘    │  • Network Security              │   │
 │                      └──────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────┘
 ```
