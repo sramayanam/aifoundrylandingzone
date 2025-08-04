@@ -11,8 +11,8 @@ Terraform configuration for deploying Azure AI Foundry with capability hosts, en
 │                Azure AI Foundry with Capability Hosts       │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐   │
 │  │ AI Foundry   │    │   Storage    │    │  AI Search   │   │
-│  │   Hub        │    │   Account    │    │   Service    │   │
-│  │ (w/ Agents)  │    │              │    │              │   │
+│  │              │    │   Account    │    │   Service    │   │
+│  │              │    │              │    │              │   │
 │  └──────────────┘    └──────────────┘    └──────────────┘   │
 │          │                    │                    │        │
 │          ▼                    ▼                    ▼        │
