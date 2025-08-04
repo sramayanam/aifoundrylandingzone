@@ -105,27 +105,27 @@ delegation {
    location     = "eastus2"
    
    # Subscription IDs
-   subscription_id_resources = "aa8123d8-cdcc-443a-a2a1-a0ed191da95c"
-   subscription_id_infra     = "32e739cb-7b23-4259-a180-e1e0e69b974d"
+   subscription_id_resources = "your-workload-subscription-id"
+   subscription_id_infra     = "your-infrastructure-subscription-id"
    
    # Resource groups
    resource_group_name_resources = "rg-agents-secured-caphost"
    
    # Networking - BOTH subnets required
-   subnet_id_private_endpoint = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-aaaorgai-eastus2/providers/Microsoft.Network/virtualNetworks/aaaorg-vnet-eastus2/subnets/default"
-   subnet_id_agent = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-aaaorgai-eastus2/providers/Microsoft.Network/virtualNetworks/aaaorg-vnet-eastus2/subnets/agent-subnet"
+   subnet_id_private_endpoint = "/subscriptions/your-infrastructure-subscription-id/resourceGroups/rg-your-network-rg/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/private-endpoint-subnet"
+   subnet_id_agent = "/subscriptions/your-infrastructure-subscription-id/resourceGroups/rg-your-network-rg/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/agent-subnet"
    
    # Private DNS zones
-   dns_zone_cognitiveservices = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com"
-   dns_zone_openai           = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.openai.azure.com"
-   dns_zone_ai_services      = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.services.ai.azure.com"
-   storage_blob_dns_zone_id  = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
-   search_dns_zone_id        = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.search.windows.net"
-   cosmos_dns_zone_id        = "/subscriptions/32e739cb-7b23-4259-a180-e1e0e69b974d/resourceGroups/rg-dnszones/providers/Microsoft.Network/privateDnsZones/privatelink.documents.azure.com"
+   dns_zone_cognitiveservices = "/subscriptions/your-infrastructure-subscription-id/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com"
+   dns_zone_openai           = "/subscriptions/your-infrastructure-subscription-id/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.openai.azure.com"
+   dns_zone_ai_services      = "/subscriptions/your-infrastructure-subscription-id/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.services.ai.azure.com"
+   storage_blob_dns_zone_id  = "/subscriptions/your-infrastructure-subscription-id/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
+   search_dns_zone_id        = "/subscriptions/your-infrastructure-subscription-id/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.search.windows.net"
+   cosmos_dns_zone_id        = "/subscriptions/your-infrastructure-subscription-id/resourceGroups/rg-dns-zones/providers/Microsoft.Network/privateDnsZones/privatelink.documents.azure.com"
    
    # Admin access
-   platform_admin_users = ["platformadmin@sreerammsft.com"]
-   platform_admin_groups = ["894e01b8-cdf3-4e7f-a81b-de804a9d4340"]
+   platform_admin_users = ["admin@yourcompany.com"]
+   platform_admin_groups = ["your-admin-group-object-id"]
    ```
 
 5. **Plan and deploy:**
