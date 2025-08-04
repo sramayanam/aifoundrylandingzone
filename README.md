@@ -46,7 +46,7 @@ This deployment provides a **cost-optimized** Azure AI Foundry setup with:
 │                     Azure AI Foundry                        │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐   │
 │  │ AI Foundry   │    │   Storage    │    │  AI Search   │   │
-│  │   Hub        │    │   Account    │    │   Service    │   │
+│  │              │    │   Account    │    │   Service    │   │
 │  │              │    │              │    │              │   │
 │  └──────────────┘    └──────────────┘    └──────────────┘   │
 │          │                    │                    │        │
