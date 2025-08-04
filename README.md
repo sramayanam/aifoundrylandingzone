@@ -12,7 +12,6 @@ Choose the configuration that best fits## 📁 Repository Structur## 📚 Additi
 **Simplified configuration** - Cost-optimized deployment without compute infrastructure
 
 - ✅ **Lower cost** (~30% reduction vs capability hosts)
-- ❌ No capability hosts for custom runtimes
 - ❌ No Cosmos DB for conversation storage
 
 **Start here** → [Continue with current configuration](#what-this-deploys)
@@ -292,14 +291,12 @@ Be aware of these architectural limitations:
 
 | Feature | NoCapabilityHosts (Current) | WithCapabilityHosts |
 |---------|---------------------------|-------------------|
-| **Cost** | ~$50-100/month | ~$75-150/month |
 | **Deployment Time** | 5-8 minutes | 8-12 minutes |
 | **Cosmos DB** | ❌ Not included | ✅ Thread storage |
 | **Capability Hosts** | ❌ Not available | ✅ Account & Project level |
 | **Agent Subnet** | ❌ Not required | ✅ Network injection |
 | **Standard Agents** | ❌ Limited support | ✅ Full support |
 | **Custom Runtimes** | ❌ Not supported | ✅ BYOA resources |
-| **Ideal For** | Development, POCs | Production, Enterprise |
 
 ### Migration Path to WithCapabilityHosts
 
