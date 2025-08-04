@@ -6,7 +6,7 @@ This repository provides production-ready Terraform configurations for deploying
 
 ## 🚀 Deployment Options
 
-Choose the configuration that best fits your requirements:
+Choose the configuration that best fits ## 📁 Repository Structur## 📚 Additional Resourcesour requirements:
 
 ### 🏃‍♂️ Quick Start: NoCapabilityHosts (Current Directory)
 **Simplified configuration** - Cost-optimized deployment without compute infrastructure
@@ -294,14 +294,12 @@ Be aware of these architectural limitations:
 
 | Feature | NoCapabilityHosts (Current) | WithCapabilityHosts |
 |---------|---------------------------|-------------------|
-| **Cost** | ~$50-100/month | ~$75-150/month |
 | **Deployment Time** | 5-8 minutes | 8-12 minutes |
 | **Cosmos DB** | ❌ Not included | ✅ Thread storage |
 | **Capability Hosts** | ❌ Not available | ✅ Account & Project level |
 | **Agent Subnet** | ❌ Not required | ✅ Network injection |
 | **Standard Agents** | ❌ Limited support | ✅ Full support |
-| **Custom Runtimes** | ❌ Not supported | ✅ BYOA resources |
-| **Ideal For** | Development, POCs | Production, Enterprise |
+| **Ideal For** | Production, Enterprise | Production, Enterprise |
 
 ### Migration Path to WithCapabilityHosts
 
@@ -331,7 +329,7 @@ To migrate to the full deployment with capability hosts:
 3. Configure agent subnet network injection parameters
 4. Plan migration carefully to avoid resource naming conflicts
 
-## � Troubleshooting
+## 🛠 Troubleshooting
 
 ### Common Issues
 
