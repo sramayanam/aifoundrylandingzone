@@ -87,7 +87,8 @@ jobs:
         done
         
         # Check for Azure subscription IDs in .tf files (not tfvars)
-        if grep -r --include="*.tf" -E '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' . | grep -v ".example" | grep -v "terraform.tfvars" | grep -v "# " | grep -v "//"; then
+        # Exclude Azure built-in role definition GUIDs (these are public constants)
+        if grep -r --include="*.tf" -E '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' . | grep -v ".example" | grep -v "terraform.tfvars" | grep -v "# " | grep -v "//" | grep -v "00000000-0000-0000-0000-000000000002"; then
           echo "Found potential Azure subscription IDs in Terraform files"
           FOUND_ISSUES=true
         fi
