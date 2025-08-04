@@ -296,7 +296,6 @@ Be aware of these architectural limitations:
 | **Capability Hosts** | ❌ Not available | ✅ Account & Project level |
 | **Agent Subnet** | ❌ Not required | ✅ Network injection |
 | **Standard Agents** | ❌ Limited support | ✅ Full support |
-| **Custom Runtimes** | ❌ Not supported | ✅ BYOA resources |
 
 ### Migration Path to WithCapabilityHosts
 
