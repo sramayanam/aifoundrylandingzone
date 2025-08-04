@@ -265,11 +265,11 @@ resource "azapi_resource" "ai_foundry" {
       # Temporarily disabled due to Azure ML RP issues
       networkInjections = [
         {
-           scenario                   = "agent"
-           subnetArmId                = local.network_config.agent_subnet_id
-           useMicrosoftManagedNetwork = false
-         }
-       ]
+          scenario                   = "agent"
+          subnetArmId                = local.network_config.agent_subnet_id
+          useMicrosoftManagedNetwork = false
+        }
+      ]
     }
   }
 
