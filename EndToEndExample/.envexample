@@ -1,0 +1,12 @@
+# Azure AI Foundry Configuration
+PROJECT_ENDPOINT=https://your-foundry-endpoint.services.ai.azure.com/api/projects/your-project-name
+MODEL_DEPLOYMENT_NAME=gpt-4o
+
+# Azure Authentication (Service Principal)
+AZURE_CLIENT_ID=your-client-id-here
+AZURE_CLIENT_SECRET=your-client-secret-here
+AZURE_TENANT_ID=your-tenant-id-here
+
+# Additional Configuration
+AGENT_NAME=SemanticKernelDemoAgent
+AGENT_DESCRIPTION=Production Azure AI Agent with Semantic Kernel integration

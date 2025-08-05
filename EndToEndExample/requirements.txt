@@ -1,0 +1,29 @@
+# Azure AI Foundry and Semantic Kernel Dependencies
+azure-ai-projects>=1.0.0b3
+azure-identity>=1.15.0
+azure-core>=1.29.0
+
+# Semantic Kernel
+semantic-kernel>=1.2.0
+
+# Additional Azure AI services
+azure-ai-inference>=1.0.0b2
+azure-search-documents>=11.4.0
+
+# Core Python dependencies
+aiohttp>=3.9.0
+pydantic>=2.5.0
+python-dotenv>=1.0.0
+asyncio-mqtt>=0.16.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.7.0
+
+# Optional: For enhanced functionality
+openai>=1.12.0
+numpy>=1.24.0
+pandas>=2.0.0
